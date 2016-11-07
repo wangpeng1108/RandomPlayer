@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">随便听听</string>
+    <string name="version">版本号：</string>
+    <string name="versionNum">1.0</string>
+
+</resources>

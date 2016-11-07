@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!--Toolbar -->
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:padding="@dimen/activity_vertical_margin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_collapseMode="pin" />
+    </android.support.design.widget.AppBarLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+    <RelativeLayout
+        android:id="@+id/playpage_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <com.wangpeng.myplayer.view.MyCircleImage
+            android:id="@+id/playpage_backimg"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/image_btn_size"
+            android:src="@drawable/playback"
+            android:layout_height="match_parent" />
+        <com.wangpeng.myplayer.view.LrcView
+            android:id="@+id/playpage_lrcview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:text="歌词界面"
+            android:fillViewport="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp" >
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/playpage_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:maxHeight="1dp"
+            android:minHeight="1dp"
+            android:progressDrawable="@drawable/bg_seekbar"
+            android:thumb="@drawable/progress_bar_playing_thumb" />
+
+        <TextView
+            android:id="@+id/playpage_playtime_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/playpage_duration_tv"
+            android:layout_alignParentLeft="true"
+
+            android:text="00:00" />
+
+        <TextView
+            android:id="@+id/playpage_duration_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/playpage_progressbar"
+            android:text="00:00" />
+
+        <CheckBox
+            android:id="@+id/playpage_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/playpage_progressbar"
+            android:layout_centerHorizontal="true"
+            android:button="@null"
+            android:background="@drawable/bt_playpage_play_toggle"
+            android:textOff=""
+            android:textOn="" />
+
+        <CheckBox
+            android:id="@+id/playpage_favor"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:gravity="right"
+            android:button="@null"
+            android:background="@drawable/favor_checkbox"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/playpage_playtime_tv"
+            android:layout_toEndOf="@+id/playpage_playtime_tv" />
+
+        <Button
+            android:id="@+id/playpage_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/playpage_duration_tv"
+            android:background="@drawable/bt_playpage_next" />
+    </RelativeLayout>
+
+</LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
