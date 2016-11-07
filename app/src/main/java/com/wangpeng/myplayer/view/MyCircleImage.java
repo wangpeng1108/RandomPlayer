@@ -12,13 +12,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class MyCircleImage extends CircleImageView implements Runnable{
-
-
-
-
     private float currentAngle = 0f; //当前旋转角度
 
-    private boolean ifRotate=false;
+    private boolean ifRotate=false; //是否旋转
 
     private int height=0,width=0;
 
@@ -53,13 +49,14 @@ public class MyCircleImage extends CircleImageView implements Runnable{
 
     }
     public void startRotate(){
-        this.ifRotate=true;
+        if(ifRotate)return;
+        ifRotate=true;
         Thread thread=new Thread(this);
         thread.start();
     }
 
     public void stopRotate(){
-        this.ifRotate=false;
+        ifRotate=false;
     }
     public void setCurrentAngle(int angle)
     {

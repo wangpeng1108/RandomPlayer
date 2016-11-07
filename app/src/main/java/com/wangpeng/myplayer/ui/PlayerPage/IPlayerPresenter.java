@@ -2,6 +2,7 @@ package com.wangpeng.myplayer.ui.PlayerPage;
 
 import com.wangpeng.myplayer.base.MVP.model.Model;
 import com.wangpeng.myplayer.base.MVP.presenter.Presenter;
+import com.wangpeng.myplayer.service.Player;
 import com.wangpeng.myplayer.service.PlayerService;
 
 /**
@@ -9,9 +10,15 @@ import com.wangpeng.myplayer.service.PlayerService;
  */
 
 public interface IPlayerPresenter extends Presenter{
-    public void changeMusic(PlayerService.MusicPlayerBinder binder,String songId);
+    public void changeMusic();
 
-    public void undateProgress(int duration, PlayerService.MusicPlayerBinder binder);
+    public void undateProgress(int duration);
 
     public void getLrc(String url);
+
+    public boolean playControl(String command);
+
+    public void setBinder(Player binder);
+
+    public void seekTo(int curr);
 }

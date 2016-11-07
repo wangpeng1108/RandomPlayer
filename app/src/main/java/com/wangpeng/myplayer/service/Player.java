@@ -25,5 +25,7 @@ public interface Player {
 
     public void pause();
 
+    public void restart();
+
     public MediaPlayer getPlayer();
 }

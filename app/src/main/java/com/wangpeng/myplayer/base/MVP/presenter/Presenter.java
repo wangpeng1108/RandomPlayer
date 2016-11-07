@@ -9,9 +9,18 @@ import com.wangpeng.myplayer.service.PlayerService;
 
 public interface Presenter<V,M> {
 
+    /**
+     * 初始化Presenter
+     */
     public void init();
 
-    public void getData(Model.OnResponse response);
+    /**
+     * 获取数据
+     */
+    public void getData();
 
-
+    /**
+     * 销毁前回调
+     */
+    public void onDestroy();
 }

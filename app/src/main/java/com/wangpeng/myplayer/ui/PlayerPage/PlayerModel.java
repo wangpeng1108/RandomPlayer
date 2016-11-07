@@ -43,12 +43,12 @@ public class PlayerModel extends BaseModel implements IPlayerModel {
 
                     @Override
                     public void onCompleted() {
-                        System.out.println("完成！");
+                        System.out.println("获取列表完成！");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        System.out.println("获取时出错："+e.getMessage());
+                        //System.out.println("获取时出错："+e.getMessage());
                         response.onFailed(e.getMessage());
                     }
 
@@ -70,13 +70,13 @@ public class PlayerModel extends BaseModel implements IPlayerModel {
 
                     @Override
                     public void onCompleted() {
-                        System.out.println("完成！");
+                        System.out.println("获取歌曲信息完成！");
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        System.out.println("获取时出错："+e.getMessage());
+                        //System.out.println("获取时出错："+e.getMessage());
                         response.onFailed(e.getMessage());
                     }
 
@@ -85,7 +85,7 @@ public class PlayerModel extends BaseModel implements IPlayerModel {
 
     @Override
     public void getLrcContent(String lrcUrl, final OnResponse response) {
-        System.out.println("开始获取歌词："+lrcUrl);
+        if(lrcUrl==null||lrcUrl.length()==0)return;
         DataService service = new PlayerRetrofit().getStringRetrofit().create(DataService.class);
         Call<String> call = service.getLrc(lrcUrl.substring("http://musicdata.baidu.com/data2/lrc/".length()));
         call.enqueue(new Callback<String>() {

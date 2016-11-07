@@ -8,7 +8,6 @@ import android.util.Log;
 public class TimeUtil {
 
 	public static String mill2mmss(long duration){
-
 		int m,s;
 		String str = "";
 		
@@ -31,14 +30,10 @@ public class TimeUtil {
 	}
 	
 	public static int getLrcMillTime(String time){
+		if(time==null||time.length()==0)return -1;
 		int millTime=0;
 		time=time.replace(".", ":");
-		
- 
-		
 		String timedata[]=time.split(":");
-		
-		//Log.i("min,second,mill", timedata[0]+","+timedata[1]+","+timedata[2]);
 		int min=0;
 		int second=0;
 		int mill=0;
@@ -47,15 +42,9 @@ public class TimeUtil {
 			second = Integer.parseInt(timedata[1]);
 			mill = Integer.parseInt(timedata[2]);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
-
 			return -1;
-		 
 		}
-		
-		
 		millTime=(min*60+second)*1000+mill*10;
 		return millTime;
 	}

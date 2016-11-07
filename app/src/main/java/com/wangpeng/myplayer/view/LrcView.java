@@ -27,7 +27,9 @@ import com.wangpeng.myplayer.R;
 import com.wangpeng.myplayer.beans.LrcContent;
 import com.wangpeng.myplayer.utils.DisplayUtil;
 import com.wangpeng.myplayer.utils.TimeUtil;
-
+/**
+ * Created by WP on 16/11/6.
+ */
 public class LrcView extends ScrollView implements OnScrollChangedListener, OnTouchListener {
     private float width;    //歌词视图宽度
     private float height;    //歌词视图高度
@@ -55,7 +57,7 @@ public class LrcView extends ScrollView implements OnScrollChangedListener, OnTo
     private OnLrcClick click;
 
     public interface OnLrcClick{
-        public void onLrcClick(LrcView view);
+        void onLrcClick(LrcView view);
     }
 
     public void setClick(OnLrcClick click1){
@@ -141,13 +143,17 @@ public class LrcView extends ScrollView implements OnScrollChangedListener, OnTo
             super.onDraw(canvas);
             if (canvas == null) return;
             int tempY = (int) height / 2;
-            for (int i = 0; i < lrcLists.size(); i++, tempY += textHeight) {
-                if (i == index) {
-                    canvas.drawText(lrcLists.get(i).getLrcStr(), width / 2, tempY, currentPaint);
-                } else if (i == pos) {
-                    canvas.drawText(lrcLists.get(i).getLrcStr(), width / 2, tempY, linePaint);
-                } else {
-                    canvas.drawText(lrcLists.get(i).getLrcStr(), width / 2, tempY, notCurrentPaint);
+            if(lrcLists==null||lrcLists.size()==0){
+                canvas.drawText("无歌词", width / 2, tempY, currentPaint);
+            }else{
+                for (int i = 0; i < lrcLists.size(); i++, tempY += textHeight) {
+                    if (i == index) {
+                        canvas.drawText(lrcLists.get(i).getLrcStr(), width / 2, tempY, currentPaint);
+                    } else if (i == pos) {
+                        canvas.drawText(lrcLists.get(i).getLrcStr(), width / 2, tempY, linePaint);
+                    } else {
+                        canvas.drawText(lrcLists.get(i).getLrcStr(), width / 2, tempY, notCurrentPaint);
+                    }
                 }
             }
         }
@@ -155,8 +161,10 @@ public class LrcView extends ScrollView implements OnScrollChangedListener, OnTo
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-            heightMeasureSpec = (int) (height + textHeight * (lrcLists.size() - 1));
-            setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+            if(lrcLists!=null&&lrcLists.size()>0) {
+                heightMeasureSpec = (int) (height + textHeight * (lrcLists.size() - 1));
+                setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+            }
         }
     }
 
@@ -317,7 +325,6 @@ public class LrcView extends ScrollView implements OnScrollChangedListener, OnTo
                     removeCallbacks(mTimerForUpEvent);
                     break;
                 } else {
-                    System.out.println("符合");
                     mIsWaitUpEvent = false;
                     removeCallbacks(mTimerForUpEvent);
                     click.onLrcClick(this);

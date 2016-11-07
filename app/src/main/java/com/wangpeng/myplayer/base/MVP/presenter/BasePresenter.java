@@ -22,9 +22,10 @@ public abstract class BasePresenter<V extends BaseView,M extends Model> implemen
     }
 
     @Override
-    public void getData(Model.OnResponse response) {
-        model.getData(response);
+    public abstract void getData();
+
+    @Override
+    public void onDestroy() {
+
     }
-
-
 }

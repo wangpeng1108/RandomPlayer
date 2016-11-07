@@ -9,9 +9,5 @@ import com.wangpeng.myplayer.service.PlayerService;
  */
 
 public class MyApplication extends Application {
-    public PlayerService musicPlayerService=null;
-    public void setMusicPlayerService (PlayerService service){
-        musicPlayerService=service;
-    }
 
 }

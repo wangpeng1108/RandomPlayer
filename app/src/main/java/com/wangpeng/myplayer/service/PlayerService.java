@@ -22,7 +22,6 @@ public class PlayerService extends Service {
     @Override
     public void onCreate() {
         myApplication = (MyApplication) getApplication();
-        myApplication.setMusicPlayerService(this);
     }
 
     public class MusicPlayerBinder extends Binder implements Player {
@@ -76,7 +75,6 @@ public class PlayerService extends Service {
     public int onStartCommand(Intent intent,int flags, int startId) {
         super.onStartCommand(intent,flags, startId);
         myApplication = (MyApplication) getApplication();
-        myApplication.setMusicPlayerService(this);
         return Service.START_NOT_STICKY;
     }
 
@@ -131,7 +129,7 @@ public class PlayerService extends Service {
     }
 
     public void mPlay(String url) {
-        System.out.println("开始播放："+url);
+        //System.out.println("开始播放："+url);
         if (mediaPlayer==null) {
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);

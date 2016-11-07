@@ -3,6 +3,7 @@ package com.wangpeng.myplayer.ui.PlayerPage;
 import com.wangpeng.myplayer.base.MVP.ui.BaseActivity;
 import com.wangpeng.myplayer.base.MVP.ui.BaseView;
 import com.wangpeng.myplayer.beans.LrcContent;
+import com.wangpeng.myplayer.beans.SongRankingBean;
 
 import java.util.List;
 
@@ -31,5 +32,11 @@ public interface IPlayerActivity extends BaseView{
 
     void setSongImg(String imgUrl);
 
+    void prePlay();
+
     void startPlay();
+
+    void pausePlay();
+
+
 }
